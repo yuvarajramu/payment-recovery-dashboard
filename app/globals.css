@@ -1,0 +1,118 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-positive: var(--positive);
+  --color-positive-foreground: var(--positive-foreground);
+  --color-violet: var(--violet);
+  --color-coral: var(--coral);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.13 0.018 260);
+  --foreground: oklch(0.94 0.012 250);
+  --card: oklch(0.17 0.02 258);
+  --card-foreground: oklch(0.94 0.012 250);
+  --popover: oklch(0.18 0.02 258);
+  --popover-foreground: oklch(0.94 0.012 250);
+  --primary: oklch(0.78 0.17 163);
+  --primary-foreground: oklch(0.14 0.03 165);
+  --secondary: oklch(0.22 0.025 258);
+  --secondary-foreground: oklch(0.86 0.02 250);
+  --muted: oklch(0.2 0.021 258);
+  --muted-foreground: oklch(0.61 0.025 250);
+  --accent: oklch(0.24 0.025 258);
+  --accent-foreground: oklch(0.94 0.012 250);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.17 163);
+  --positive: oklch(0.78 0.17 163);
+  --positive-foreground: oklch(0.14 0.03 165);
+  --violet: oklch(0.72 0.14 293);
+  --coral: oklch(0.72 0.15 35);
+  --radius: 0.7rem;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  html { background: var(--background); }
+  body { @apply bg-background text-foreground font-sans; }
+  button, a { @apply transition-colors; }
+}
+
+.eyebrow { @apply text-[10px] font-semibold uppercase tracking-[0.16em] text-muted-foreground; }
+.sidebar { @apply fixed inset-y-0 left-0 z-10 w-64 flex-col border-r border-border bg-card/35 px-5 py-6; }
+.brand-mark { @apply flex size-8 items-center justify-center rounded-lg bg-positive text-positive-foreground; }
+.brand-mark svg { @apply size-4; }
+.nav-item { @apply flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground; }
+.nav-item svg { @apply size-4; }
+.nav-item:hover { @apply bg-accent text-foreground; }
+.nav-active { @apply bg-positive/10 text-positive; }
+.nav-count { @apply ml-auto rounded-full bg-accent px-2 py-0.5 text-[10px] text-muted-foreground; }
+.topbar { @apply flex h-16 items-center border-b border-border px-5 sm:px-8 lg:px-10; }
+.icon-button { @apply inline-flex size-9 items-center justify-center rounded-lg text-muted-foreground hover:bg-accent hover:text-foreground; }
+.icon-button svg { @apply size-4; }
+.refresh-button, .filter-button { @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card px-3 py-2 text-xs font-medium text-foreground hover:bg-accent; }
+.refresh-button svg, .filter-button svg { @apply size-3.5; }
+.avatar { @apply flex size-8 items-center justify-center rounded-full bg-secondary text-[10px] font-semibold text-secondary-foreground; }
+.metric-card { @apply rounded-xl border border-border bg-card/65 p-5; }
+.metric-icon { @apply flex size-9 items-center justify-center rounded-lg; }
+.metric-icon svg { @apply size-4; }
+.metric-green { @apply bg-positive/10 text-positive; }
+.metric-violet { @apply bg-violet/10 text-violet; }
+.metric-coral { @apply bg-coral/10 text-coral; }
+.panel { @apply rounded-xl border border-border bg-card/65; }
+.panel-header { @apply flex items-start justify-between gap-4 border-b border-border px-5 py-5; }
+.panel-title { @apply text-sm font-semibold text-foreground; }
+.panel-subtitle { @apply mt-1 text-xs text-muted-foreground; }
+thead { @apply bg-secondary/30; }
+th { @apply px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground; }
+td { @apply border-t border-border px-5 py-4 text-xs; }
+tbody tr { @apply cursor-pointer; }
+tbody tr:hover, .row-selected { @apply bg-accent/45; }
+.payment-symbol { @apply flex size-8 items-center justify-center rounded-lg border border-border bg-secondary text-muted-foreground; }
+.payment-symbol svg { @apply size-3.5; }
+.status-badge { @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium; }
+.status-badge svg { @apply size-3; }
+.status-success { @apply bg-positive/10 text-positive; }
+.status-warning { @apply bg-coral/10 text-coral; }
+.status-danger { @apply bg-coral/10 text-coral; }
+.status-neutral { @apply bg-secondary text-muted-foreground; }
+.timeline-item { @apply relative flex gap-3; }
+.timeline-item:not(:last-child)::before { content: ''; @apply absolute left-[7px] top-6 h-full w-px bg-border; }
+.timeline-dot { @apply relative z-[1] flex size-4 shrink-0 items-center justify-center rounded-full border-2 border-card bg-secondary text-card; }
+.timeline-dot svg { @apply size-2.5; }
+.dot-success { @apply border-positive bg-positive text-positive-foreground; }
+.dot-violet { @apply border-violet bg-violet/20; }
+.dot-danger { @apply border-coral bg-coral/20; }
+.dot-neutral { @apply border-muted-foreground/40; }
+.text-positive { color: var(--positive); }
+.text-violet { color: var(--violet); }
+.text-coral { color: var(--coral); }
